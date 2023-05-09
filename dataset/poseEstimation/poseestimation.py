@@ -59,7 +59,7 @@ class PoseEstimation(Dataset):
         self.num_points = num_points
         logging.info(f'==> sucessfully loaded {self.partition} data')
         self.transform = transform
-        self.num_classes = num_classes
+        self._num_classes = num_classes
 
     def __getitem__(self, item):
         pointcloud = self.data[item][:self.num_points]
@@ -82,7 +82,7 @@ class PoseEstimation(Dataset):
 
     @property
     def num_classes(self):
-        return self.num_classes
+        return self._num_classes
 
     """ for visulalization
     from openpoints.dataset import vis_multi_points
